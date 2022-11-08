@@ -73,38 +73,29 @@ int ft_atoi(char *str)
 
 int main(int argv, char **argc)
 {
-    char *pid;
-    char *str;
+    char    *pid;
+    char    *str;
     int bitcount;
 
     bitcount = 0;
     pid = argc[1];
-    str = argc[2];
+    str = (argc[2]);
+    printf("%s\n",str);
+    // printf("")
     validpid(pid);
-    // putstr(pid);
-    // write(1, "\n", 1);
-    int i = 0;
-    while (str[i])
-    {
-        bitcount = 0;
-        while (bitcount < 16)
-        {
-            printf("this is i %d\n",i);
-            printf("this is the number %d\n", (str[i]>>bitcount));
-            kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
-            // kill(ft_atoi(pid),(30));
-            usleep(50);
-            bitcount++;
-        }
-        i++;
-    }
-    // printf("this is the size of bool %ld", str);
-    // printf("%d\n", PID_MAX);
+    // int i = 0;
+    // while (str[i])
+    // {
+    //     bitcount = 0;
+    //     while (bitcount < 16)
+    //     {
+    //         printf("this is i %d\n",i);
+    //         printf("this is the number %d\n", (str[i]>>bitcount));
+    //         kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
+    //         // kill(ft_atoi(pid),(30));
+    //         usleep(50);
+    //         bitcount++;
+    //     }
+    //     i++;
+    // }
 }
-
-// int main()
-// {
-//   printf ("Before Forking\n");
-//   fork();
-//   printf ("After Forking\n");
-// }
