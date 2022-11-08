@@ -16,6 +16,20 @@ void    putstr(char *str)
     }
 }
 
+void    validpid(char *pid)
+{
+    int i = 0;
+    while (pid[i])
+    {
+        if (pid[i] < '0' || pid[i] > '9')
+        {
+            putstr("UNVALID PID");
+            exit(0);
+        }
+    }
+}
+
+
 void    putnbr(int n)
 {
     char a;
@@ -27,18 +41,6 @@ void    putnbr(int n)
     write(1, &a,1);
 }
 
-int tenpower(int p)
-{
-    int n;
-
-    n = 1;
-    while (p)
-    {
-        n = n * 10;
-        p--;
-    }
-    return (n);
-}
 
 int ft_atoi(char *str)
 {
@@ -62,18 +64,21 @@ int ft_atoi(char *str)
         l--;
     while (str[i])
     {
-        n = (str[i] - '0') * tenpower(l - 1);
+        n = (n * 10) + (str[i] - '0');
         i++;
         l--;
     }
-    
+    return (n * s);
+
 }
+
 int main(int argv, char **argc)
 {
     char *str = argc[1];
+    //validpid(str);
     putstr(str);
     write(1, "\n", 1);
-    printf("this is the size %ld",sizeof(pid_t));
+    //printf("this is the number %d",ft_atoi(str));
     // printf("%d\n", PID_MAX);
 }
 
