@@ -26,18 +26,47 @@ void    putnbr(int n)
     a = n % 10 + '0';
     write(1, &a,1);
 }
+
+int tenpower(int p)
+{
+    int n;
+
+    n = 1;
+    while (p)
+    {
+        n = n * 10;
+        p--;
+    }
+    return (n);
+}
+
 int ft_atoi(char *str)
 {
     int i;
+    int l;
     int s;
+    int n;
 
     i = 0;
     s = 1;
+    l = 0;
+    n = 0;
     if (str[0] == '-')
     {
         s = -1;
         i = 1;
     }
+    while (str[l])
+        l++;
+    if (s == -1)
+        l--;
+    while (str[i])
+    {
+        n = (str[i] - '0') * tenpower(l - 1);
+        i++;
+        l--;
+    }
+    
 }
 int main(int argv, char **argc)
 {
