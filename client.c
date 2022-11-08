@@ -7,11 +7,18 @@
 void    putstr(char *str)
 {
     int i;
+    int a;
 
     i = 0;
     while (str[i])
     {
         write(1, &str[i],1);
+        a = 0;
+        while (str[i]>>a)
+        {
+            printf("%d\n", str[i]>>a);
+            a++;
+        }
         i++;
     }
 }
@@ -80,10 +87,10 @@ int main(int argv, char **argc)
     bitcount = 0;
     pid = argc[1];
     str = (argc[2]);
-    printf("%s\n",str);
+    putstr(str);
     // printf("")
     validpid(pid);
-    // int i = 0;
+    int i = 0;
     // while (str[i])
     // {
     //     bitcount = 0;
