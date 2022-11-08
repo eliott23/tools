@@ -81,16 +81,16 @@ int main(int argv, char **argc)
     pid = argc[1];
     str = argc[2];
     validpid(pid);
-    putstr(pid);
-    write(1, "\n", 1);
+    // putstr(pid);
+    // write(1, "\n", 1);
     int i = 0;
     while (str[i])
     {
         bitcount = 0;
         while (bitcount < 16)
         {
+            printf("this is i %d\n",i);
             printf("this is the number %d\n", (str[i]>>bitcount));
-            printf("this is the number %d\n", ((str[i]>>bitcount)));
             kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
             // kill(ft_atoi(pid),(30));
             usleep(50);
