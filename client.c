@@ -83,7 +83,7 @@ int main(int argv, char **argc)
     validpid(pid);
     putstr(pid);
     write(1, "\n", 1);
-    kill(ft_atoi(pid),30);
+    kill(ft_atoi(pid),31);
     // printf("this is the str %s", str);
     // printf("%d\n", PID_MAX);
 }
