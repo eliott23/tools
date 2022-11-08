@@ -26,7 +26,19 @@ void    putnbr(int n)
     a = n % 10 + '0';
     write(1, &a,1);
 }
-int ft_atoi()
+int ft_atoi(char *str)
+{
+    int i;
+    int s;
+
+    i = 0;
+    s = 1;
+    if (str[0] == '-')
+    {
+        s = -1;
+        i = 1;
+    }
+}
 int main(int argv, char **argc)
 {
     char *str = argc[1];
