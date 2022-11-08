@@ -87,7 +87,6 @@ int main(int argv, char **argc)
     while (i < 4)
     {
         kill(ft_atoi(pid),31);
-        sl
         i++;
     }
     // printf("this is the str %s", str);
