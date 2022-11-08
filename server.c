@@ -31,6 +31,7 @@ void    test(int sig)
 {
     printf("the least significant bit %d\n", sig - 30);
 }
+
 int main()
 {
     signal(SIGUSR1,test);

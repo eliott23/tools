@@ -87,11 +87,12 @@ int main(int argv, char **argc)
     while (str[i])
     {
         bitcount = 0;
-        while (bitcount < 4)
+        while (bitcount < 16)
         {
-            printf("this is the number %d\n", ((str[i]>>1) % 2));
+            printf("this is the number %d\n", (str[i]>>bitcount));
+            printf("this is the number %d\n", ((str[i]>>bitcount)));
             kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
-            // kill(ft_atoi(pid),(31));
+            // kill(ft_atoi(pid),(30));
             usleep(50);
             bitcount++;
         }
