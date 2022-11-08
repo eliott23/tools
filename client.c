@@ -26,6 +26,7 @@ void    validpid(char *pid)
             putstr("UNVALID PID");
             exit(0);
         }
+        i++;
     }
 }
 
@@ -74,11 +75,16 @@ int ft_atoi(char *str)
 
 int main(int argv, char **argc)
 {
-    char *str = argc[1];
-    //validpid(str);
-    putstr(str);
+    char *pid;
+    char *str;
+
+    pid = argc[1];
+    str = argc[2];
+    validpid(pid);
+    putstr(pid);
     write(1, "\n", 1);
-    //printf("this is the number %d",ft_atoi(str));
+    kill(ft_atoi(pid),30);
+    // printf("this is the str %s", str);
     // printf("%d\n", PID_MAX);
 }
 
