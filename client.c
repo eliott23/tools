@@ -32,6 +32,7 @@ int main(int argv, char **argc)
     putstr(str);
     write(1,"\n",1);
     putnbr(getpid());
+    while(1);
 }
 
 // int main()
