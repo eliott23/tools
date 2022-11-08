@@ -25,14 +25,13 @@ void    putnbr(int n)
     a = n % 10 + '0';
     write(1, &a,1);
 }
-
+// int ft_atoi()
 int main(int argv, char **argc)
 {
     char *str = argc[1];
     putstr(str);
-    write(1,"\n",1);
-    putnbr(getpid());
-    while(1);
+    write(1, "\n", 1);
+    printf("%d\n", PID_MAX);
 }
 
 // int main()

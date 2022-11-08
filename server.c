@@ -26,11 +26,8 @@ void    putnbr(int n)
     write(1, &a,1);
 }
 
-int main(int argv, char **argc)
+int main()
 {
-    char *str = argc[1];
-    putstr(str);
-    write(1,"\n",1);
     putnbr(getpid());
     while (1);
 }
