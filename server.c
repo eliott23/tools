@@ -26,9 +26,10 @@ void    putnbr(int n)
     a = n % 10 + '0';
     write(1, &a,1);
 }
+
 void    test(int sig)
 {
-    printf("the signal is %d\n", sig);
+    printf("the least significant bit %d\n", sig - 30);
 }
 int main()
 {

@@ -30,7 +30,6 @@ void    validpid(char *pid)
     }
 }
 
-
 void    putnbr(int n)
 {
     char a;
@@ -41,7 +40,6 @@ void    putnbr(int n)
     a = n % 10 + '0';
     write(1, &a,1);
 }
-
 
 int ft_atoi(char *str)
 {
@@ -77,19 +75,29 @@ int main(int argv, char **argc)
 {
     char *pid;
     char *str;
+    int bitcount;
 
+    bitcount = 0;
     pid = argc[1];
     str = argc[2];
     validpid(pid);
     putstr(pid);
     write(1, "\n", 1);
     int i = 0;
-    while (i < 4)
+    while (str[i])
     {
-        kill(ft_atoi(pid),31);
+        bitcount = 0;
+        while (bitcount < 4)
+        {
+            printf("this is the number %d\n", ((str[i]>>1) % 2));
+            kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
+            // kill(ft_atoi(pid),(31));
+            usleep(50);
+            bitcount++;
+        }
         i++;
     }
-    // printf("this is the str %s", str);
+    // printf("this is the size of bool %ld", str);
     // printf("%d\n", PID_MAX);
 }
 
