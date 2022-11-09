@@ -4,7 +4,8 @@
 #include <unistd.h>
 #include <sys/proc.h>
 
-char *str
+char    str;
+
 void    putstr(char *str)
 {
     int i;
