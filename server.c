@@ -31,7 +31,16 @@ void    putnbr(int n)
 
 void    test(int sig)
 {
-    printf("the least significant bit %d\n", sig - 30);
+    static int count = 0;
+
+    str = (str * 2) + sig - 30;
+    count++;
+    if (count == 8)
+    {
+        count = 0;
+        write(1, &str, 1);
+        str = 0;
+    }
 }
 
 int main()
@@ -39,6 +48,5 @@ int main()
     signal(SIGUSR1,test);
     signal(SIGUSR2,test);
     putnbr(getpid());
-    write(1, "\n", 1);
     while (1);
 }
