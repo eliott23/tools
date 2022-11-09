@@ -82,7 +82,6 @@ int main(int argv, char **argc)
     bitcount = 0;
     pid = argc[1];
     str = (argc[2]);
-    write(1, "\n", 1);
     validpid(pid);
     int i = 0;
     while (str[i])
@@ -93,11 +92,12 @@ int main(int argv, char **argc)
             val = (str[i]>>bitcount) % 2;
             if (val < 0)
                 val *= -1;
-            // printf("this is i %d\n",i);
+            printf("this is i %d\n",i);
             // printf("this is the number without shift %d\n", (str[i]));
-            // printf("this is the number %d\n", val);
-            kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
-            // kill(ft_atoi(pid),(30));
+            printf("this is the number %d\n", val);
+            printf("this is the signal %d\n", val + 30);
+            // kill(ft_atoi(pid),val + 30);
+            kill(ft_atoi(pid),9);
             usleep(50);
             bitcount--;
         }
