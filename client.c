@@ -14,11 +14,12 @@ void    putstr(char *str)
     {
         write(1, &str[i],1);
         a = 0;
-        while (str[i]>>a)
+        while (a < 16)
         {
             printf("%d\n", str[i]>>a);
             a++;
         }
+        printf("i incremented 😭\n");
         i++;
     }
 }
