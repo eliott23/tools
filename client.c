@@ -13,13 +13,6 @@ void    putstr(char *str)
     while (str[i])
     {
         write(1, &str[i],1);
-        a = 0;
-        while (a < 16)
-        {
-            printf("%d\n", str[i]>>a);
-            a++;
-        }
-        printf("i incremented 😭\n");
         i++;
     }
 }
@@ -76,7 +69,6 @@ int ft_atoi(char *str)
         l--;
     }
     return (n * s);
-
 }
 
 int main(int argv, char **argc)
@@ -89,21 +81,22 @@ int main(int argv, char **argc)
     pid = argc[1];
     str = (argc[2]);
     putstr(str);
-    // printf("")
+    write(1, "\n", 1);
     validpid(pid);
     int i = 0;
-    // while (str[i])
-    // {
-    //     bitcount = 0;
-    //     while (bitcount < 16)
-    //     {
-    //         printf("this is i %d\n",i);
-    //         printf("this is the number %d\n", (str[i]>>bitcount));
-    //         kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
-    //         // kill(ft_atoi(pid),(30));
-    //         usleep(50);
-    //         bitcount++;
-    //     }
-    //     i++;
-    // }
+    while (str[i])
+    {
+        bitcount = 0;
+        while (bitcount < 8)
+        {
+            printf("this is i %d\n",i);
+            printf("this is the number without shift %d\n", (str[i]));
+            printf("this is the number %d\n", ((str[i]>>bitcount) % 2));
+            kill(ft_atoi(pid),(((str[i]>>bitcount) % 2) + 30));
+            // kill(ft_atoi(pid),(30));
+            usleep(50);
+            bitcount++;
+        }
+        i++;
+    }
 }
