@@ -98,7 +98,7 @@ int main(int argv, char **argc)
             // printf("this is the signal %d\n", val + 30);
             kill(ft_atoi(pid),val + 30);
             // kill(ft_atoi(pid),9);
-            usleep(140);
+            usleep(160);
             bitcount--;
         }
         i++;
