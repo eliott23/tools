@@ -38,6 +38,7 @@ void    test(int sig)
     if (count == 8)
     {
         count = 0;
+        fprintf(stderr,"\nthis is the value %d",str);
         write(1, &str, 1);
         str = 0;
     }
