@@ -78,6 +78,8 @@ int main(int argv, char **argc)
     int val;
     int bitcount;
 
+    if (argv < 2)
+        return (0);
     val = 0;
     bitcount = 0;
     pid = argc[1];
