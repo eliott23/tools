@@ -6,14 +6,14 @@
 
 char    str;
 
-void    putstr(char *str)
+void    putstr(char *s)
 {
     int i;
 
     i = 0;
-    while (str[i])
+    while (s[i])
     {
-        write(1, &str[i],1);
+        write(1, &s[i],1);
         i++;
     }
 }
@@ -38,7 +38,7 @@ void    test(int sig)
     if (count == 8)
     {
         count = 0;
-        fprintf(stderr,"\nthis is the value %d",str);
+        fprintf(stderr,"\nthis is the value %d ",str);
         write(1, &str, 1);
         str = 0;
     }
