@@ -34,11 +34,13 @@ void    test(int sig)
     static int count = 0;
 
     str = (str * 2) + sig - 30;
+    // fprintf(stderr, "\nthis is the signal %d\n",sig);
+    // fprintf(stderr,"\nthis is the value %d ",str);
     count++;
     if (count == 8)
     {
         count = 0;
-        fprintf(stderr,"\nthis is the value %d ",str);
+        // fprintf(stderr,"\nthis is the final value %d ",str);
         write(1, &str, 1);
         str = 0;
     }
@@ -49,5 +51,6 @@ int main()
     signal(SIGUSR1,test);
     signal(SIGUSR2,test);
     putnbr(getpid());
-    while (1);
+    while (1)
+        pause();
 }
