@@ -78,8 +78,8 @@ int main(int argv, char **argc)
     int val;
     int bitcount;
 
-    if (argv < 3)
-        return (0);
+    // if (argv <= 3)
+    //     return (0);
     val = 0;
     bitcount = 0;
     pid = argc[1];
@@ -88,7 +88,7 @@ int main(int argv, char **argc)
     int i = 0;
     while (str[i])
     {
-        bitcount = 7;
+       bitcount = 7;
         // printf("this is i %d\n",i);
         while (bitcount >= 0)
         {
@@ -100,7 +100,7 @@ int main(int argv, char **argc)
             // printf("this is the signal %d\n", val + 30);
             kill(ft_atoi(pid),val + 30);
             // kill(ft_atoi(pid),9);
-            usleep(160);
+            usleep(200);
             bitcount--;
         }
         i++;
