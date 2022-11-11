@@ -5,6 +5,7 @@
 #include <sys/proc.h>
 
 char    str;
+int     b_count;
 
 void    putstr(char *s)
 {
@@ -34,6 +35,7 @@ void    test(int sig)
     static int count = 0;
 
     str = (str * 2) + sig - 30;
+    b_count++;
     // fprintf(stderr, "\nthis is the signal %d\n",sig);
     // fprintf(stderr,"\nthis is the value %d ",str);
     count++;
@@ -52,5 +54,8 @@ int main()
     signal(SIGUSR2,test);
     putnbr(getpid());
     while (1)
+    {
         pause();
+        // printf("this is the b_count %d\n",b_count);
+    }
 }

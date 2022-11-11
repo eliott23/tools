@@ -86,6 +86,7 @@ int main(int argv, char **argc)
     str = (argc[2]);
     validpid(pid);
     int i = 0;
+    int s_count = 0;
     while (str[i])
     {
        bitcount = 7;
@@ -99,10 +100,12 @@ int main(int argv, char **argc)
             // printf("this is the number %d\n", val);
             // printf("this is the signal %d\n", val + 30);
             kill(ft_atoi(pid),val + 30);
+            s_count++;
             // kill(ft_atoi(pid),9);
             usleep(200);
             bitcount--;
         }
         i++;
     }
+    printf("this is the bitcount %d\n",s_count);
 }
