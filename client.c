@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/12 18:22:29 by aababach          #+#    #+#             */
+/*   Updated: 2022/11/12 18:23:04 by aababach         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
@@ -19,7 +31,9 @@ void	putstr(char *str)
 
 void	validpid(char *pid)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (pid[i])
 	{
 		if (pid[i] < '0' || pid[i] > '9')
@@ -42,7 +56,7 @@ void	putnbr(int n)
 	write(1, &a, 1);
 }
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int	i;
 	int	l;
@@ -93,8 +107,8 @@ int	main(int argv, char **argc)
 	pid = argc[1];
 	str = (argc[2]);
 	validpid(pid);
-	int i = 0;
-	int s_count = 0;
+	int	i = 0;
+	int	s_count = 0;
 	while (str[i])
 	{
 		bitcount = 7;
