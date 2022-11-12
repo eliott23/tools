@@ -56,7 +56,6 @@ int main()
     while (1)
     {
         pause();
-        
         // printf("this is the b_count %d\n",b_count);
     }
 }
