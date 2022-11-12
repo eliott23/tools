@@ -70,6 +70,10 @@ int ft_atoi(char *str)
     }
     return (n * s);
 }
+void    test(int a)
+{
+    a = 0;
+}
 
 int main(int argv, char **argc)
 {
@@ -82,6 +86,8 @@ int main(int argv, char **argc)
     // if (argv <= 3)
     //     return (0);
     struct sigaction sa;
+    sa.__sigaction_u.__sa_handler = test;
+    sigaction(SIGUSR1,&sa,NULL);
     val = 0;
     bitcount = 0;
     pid = argc[1];
