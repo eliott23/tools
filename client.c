@@ -111,7 +111,7 @@ int main(int argv, char **argc)
             s_count++;
             pause();
             // kill(ft_atoi(pid),9);
-            usleep(80);
+            usleep(100);
             bitcount--;
         }
         i++;
