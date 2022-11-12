@@ -78,8 +78,10 @@ int main(int argv, char **argc)
     int val;
     int bitcount;
 
+    // printf("this is my pid %d\n",getpid());
     // if (argv <= 3)
     //     return (0);
+    struct sigaction sa;
     val = 0;
     bitcount = 0;
     pid = argc[1];
@@ -101,11 +103,11 @@ int main(int argv, char **argc)
             // printf("this is the signal %d\n", val + 30);
             kill(ft_atoi(pid),val + 30);
             s_count++;
+            pause();
             // kill(ft_atoi(pid),9);
-            usleep(200);
+            usleep(100);
             bitcount--;
         }
         i++;
     }
-    printf("this is the bitcount %d\n",s_count);
 }

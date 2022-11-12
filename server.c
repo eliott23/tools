@@ -30,10 +30,11 @@ void    putnbr(int n)
     write(1, &a,1);
 }
 
-void    test(int sig)
+void    test(int sig, siginfo_t *inf, void *c)
 {
     static int count = 0;
 
+    // printf("this is the source pid %d\n",inf->si_pid);
     str = (str * 2) + sig - 30;
     b_count++;
     // fprintf(stderr, "\nthis is the signal %d\n",sig);
@@ -46,12 +47,21 @@ void    test(int sig)
         write(1, &str, 1);
         str = 0;
     }
+    usleep(100);
+    kill(inf->si_pid, 30);
 }
 
 int main()
 {
-    signal(SIGUSR1,test);
-    signal(SIGUSR2,test);
+    struct sigaction sa;
+
+    sa.sa_flags = SA_SIGINFO;
+    // sa.__sigaction_u.__sa_handler = &test;
+    sa.__sigaction_u.__sa_sigaction = &test;
+    // signal(SIGUSR1,test);
+    // signal(SIGUSR2,test);
+    sigaction(SIGUSR1,&sa,NULL);
+    sigaction(SIGUSR2,&sa,NULL);
     putnbr(getpid());
     while (1)
     {
