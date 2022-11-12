@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:22:29 by aababach          #+#    #+#             */
-/*   Updated: 2022/11/12 18:31:11 by aababach         ###   ########.fr       */
+/*   Updated: 2022/11/12 20:44:06 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 void	putstr(char *str)
 {
 	int	i;
-	int	a;
 
 	i = 0;
 	while (str[i])
@@ -87,7 +86,15 @@ int	ft_atoi(char *str)
 
 void	test(int a)
 {
-	a = 0;
+	(void)a;
+}
+
+void	ft_init(void)
+{
+	struct sigaction	sa;
+
+	sa.__sigaction_u.__sa_handler = test;
+	sigaction(SIGUSR1, &sa, NULL);
 }
 
 int	main(int argv, char **argc)
@@ -95,28 +102,25 @@ int	main(int argv, char **argc)
 	char			*str;
 	int				val;
 	int				bitcount;
-	struct sigaction sa;
+	int				i;
 
+	i = 0;
+	ft_init();
 	if (argv != 3)
 		return (0);
-	sa.__sigaction_u.__sa_handler = test;
-	sigaction(SIGUSR1, &sa, NULL);
 	val = 0;
 	bitcount = 0;
 	str = (argc[2]);
 	validpid(argc[1]);
-	int	i = 0;
-	int	s_count = 0;
 	while (str[i])
 	{
 		bitcount = 7;
 		while (bitcount >= 0)
 		{
-			val = (str[i]>>bitcount) % 2;
+			val = (str[i] >> bitcount) % 2;
 			if (val < 0)
 				val *= -1;
-			kill(ft_atoi(pid), val + 30);
-			s_count++;
+			kill(ft_atoi(argc[1]), val + 30);
 			pause();
 			usleep(100);
 			bitcount--;
