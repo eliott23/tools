@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:22:29 by aababach          #+#    #+#             */
-/*   Updated: 2022/11/12 18:23:04 by aababach         ###   ########.fr       */
+/*   Updated: 2022/11/12 18:31:11 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,19 @@ void	test(int a)
 
 int	main(int argv, char **argc)
 {
-	char	*pid;
-	char	*str;
-	int	val;
-	int	bitcount;
+	char			*str;
+	int				val;
+	int				bitcount;
+	struct sigaction sa;
 
 	if (argv != 3)
 		return (0);
-	struct sigaction sa;
 	sa.__sigaction_u.__sa_handler = test;
 	sigaction(SIGUSR1, &sa, NULL);
 	val = 0;
 	bitcount = 0;
-	pid = argc[1];
 	str = (argc[2]);
-	validpid(pid);
+	validpid(argc[1]);
 	int	i = 0;
 	int	s_count = 0;
 	while (str[i])
