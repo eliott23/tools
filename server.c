@@ -47,7 +47,7 @@ void    test(int sig, siginfo_t *inf, void *c)
         write(1, &str, 1);
         str = 0;
     }
-    usleep(100);
+    usleep(80);
     kill(inf->si_pid, 30);
 }
 
