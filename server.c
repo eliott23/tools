@@ -6,42 +6,15 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:10:34 by aababach          #+#    #+#             */
-/*   Updated: 2022/11/12 18:14:25 by aababach         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:53:58 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <signal.h>
-#include <unistd.h>
-#include <sys/proc.h>
+#include "header.h"
 
 char	g_str;
 
-void	putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-}
-
-void	putnbr(int n)
-{
-	char	a;
-
-	a = 0;
-	if (n > 9)
-		putnbr(n / 10);
-	a = n % 10 + '0';
-	write(1, &a, 1);
-}
-
-void	test(int sig, siginfo_t *inf, void *c)
+void	handler(int sig, siginfo_t *inf, void *c)
 {
 	static int	count = 0;
 
@@ -63,7 +36,7 @@ int	main(void)
 	struct sigaction	sa;
 
 	sa.sa_flags = SA_SIGINFO;
-	sa.__sigaction_u.__sa_sigaction = &test;
+	sa.__sigaction_u.__sa_sigaction = &handler;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	putnbr(getpid());
