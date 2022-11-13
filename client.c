@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:36:24 by aababach          #+#    #+#             */
-/*   Updated: 2022/11/12 21:53:47 by aababach         ###   ########.fr       */
+/*   Updated: 2022/11/13 12:48:51 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,33 @@ void	test(int a)
 	(void)a;
 }
 
-void	ft_init(void)
+void	ft_init(int *i, int *val, int *bitcount, int argv)
 {
 	struct sigaction	sa;
 
+	if (argv != 3)
+		exit(0);
 	sa.__sigaction_u.__sa_handler = test;
 	sigaction(SIGUSR1, &sa, NULL);
+	*i = 0;
+	*val = 0;
+	*bitcount = 0;
 }
 
 int	main(int argv, char **argc)
 {
-	char			*str;
 	int				val;
 	int				bitcount;
 	int				i;
 
-	i = 0;
-	ft_init();
-	if (argv != 3)
-		return (0);
-	val = 0;
-	bitcount = 0;
-	str = (argc[2]);
+	ft_init(&i, &val, &bitcount, argv);
 	validpid(argc[1]);
-	while (str[i])
+	while (argc[2][i])
 	{
 		bitcount = 7;
 		while (bitcount >= 0)
 		{
-			val = (str[i] >> bitcount) % 2;
+			val = (argc[2][i] >> bitcount) % 2;
 			if (val < 0)
 				val *= -1;
 			kill(ft_atoi(argc[1]), val + 30);
