@@ -1,25 +1,34 @@
 FLAGS=-Wall -Wextra -Werror
-NAME=server\
-client
-B_NAME=checker
-SRC=helper.c\
-server.c\
+Client=client
+Server=Server
+NAME=$(Server) $(Client)
+CSRC=helper.c\
 client.c\
+SSRC=helper.c\
+server.c\
 
-OBJ=$(SRC:.c=.o)
+COBJ=$(CSRC:.c=.o)
+SOBJ=$(SSRC:.c=.o)
 
 all:$(NAME)
 
-$(NAME):$(OBJ)
-	cc $(FLAGS) -o $@ $(OBJ)
+$(Client):$(COBJ)
+	cc $(FLAGS) -o $@ $(COBJ) 
 
-$(OBJ) : $(SRC)
-	cc $(FLAGS) -c $(SRC)
+$(Server):$(SOBJ)
+	cc $(FLAGS) -o $@ $^
+
+$(COBJ) : $(CSRC)
+	cc $(FLAGS) -c $(CSRC)
+
+$(SOBJ) : $(SSRC)
+	cc $(FLAGS) -c $(SSRC)
 
 clean:
-	rm -rf $(OBJ) $(OBJ_B)
+	rm -rf $(COBJ) $(SOBJ)
 
 re: clean all
+
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf $(B_NAME)
+	rm -rf $(COBJ) $(SOBJ)
