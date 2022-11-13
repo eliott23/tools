@@ -1,7 +1,6 @@
 FLAGS=-Wall -Wextra -Werror
 Client=client
 Server=Server
-NAME=$(Server) $(Client)
 CSRC=helper.c\
 client.c\
 SSRC=helper.c\
@@ -12,17 +11,19 @@ SOBJ=$(SSRC:.c=.o)
 
 all:$(NAME)
 
-$(Client):$(COBJ)
-	cc $(FLAGS) -o $@ $(COBJ) 
+$(NAME):$(COBJ) $(SOBJ)
 
-$(Server):$(SOBJ)
-	cc $(FLAGS) -o $@ $^
+$(COBJ):$(CSRC)
+	cc $(FLAGS) -o client client.o helper.o
 
-$(COBJ) : $(CSRC)
-	cc $(FLAGS) -c $(CSRC)
+$(CSRC):
+	cc $(FLAGS) -c helper.c client.c
 
-$(SOBJ) : $(SSRC)
-	cc $(FLAGS) -c $(SSRC)
+$(SOBJ):$(SSRC)
+	cc $(FLAGS) -o server helper.o server.o
+
+$(SSRC):
+	cc $(FLAGS) -c helper.c server.c
 
 clean:
 	rm -rf $(COBJ) $(SOBJ)
