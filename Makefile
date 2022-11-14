@@ -28,7 +28,7 @@ $(HOBJ):$(HSRC)
 	cc $(FLAGS) -c $^
 
 $(NAME2):$(COBJ) $(HOBJ)
-	cc $(FLAGS) -o client $^
+	cc $(FLAGS) -o $@ $^
 
 $(COBJ):$(CSRC)
 	cc $(FLAGS) -c $^
