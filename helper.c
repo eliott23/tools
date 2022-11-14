@@ -6,7 +6,7 @@
 /*   By: aababach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 12:51:49 by aababach          #+#    #+#             */
-/*   Updated: 2022/11/14 14:15:35 by aababach         ###   ########.fr       */
+/*   Updated: 2022/11/14 14:29:09 by aababach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ void	validpid(char *pid)
 	while (pid[i])
 	{
 		if (pid[i] < '0' || pid[i] > '9')
-		{
-			putstr("UNVALID PID");
 			exit(0);
-		}
 		i++;
 	}
 }
