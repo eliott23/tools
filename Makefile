@@ -1,18 +1,34 @@
 FLAGS=-Wall -Wextra -Werror
-NAME=client\
+NAME=server\
+
+NAME2=client\
+
 CSRC=helper.c\
 client.c\
-SSRC=helper.c\
-server.c\
 
-COBJ=$(CSRC:.c=.o)
-SOBJ=$(SSRC:.c=.o)
+SSRC=server.c\
 
-all:client
+HSRC=helper.c\
 
-client:$(COBJ)
-	cc $(FLAGS) -o client $(COBJ)
+HOBJ=helper.o\
+
+COBJ=client.o\
+
+SOBJ=server.o\
+
+all:$(NAME) $(NAME2)
+
+$(NAME):$(SOBJ) $(HOBJ)
+	cc $(FLAGS) -o server $^
+
+$(SOBJ):$(SSRC)
+	cc $(FLAGS) -c $^
+
+$(HOBJ):$(HSRC)
+	cc $(FLAGS) -c $^
+
+$(NAME2):$(COBJ) $(HOBJ)
+	cc $(FLAGS) -o client $^
 
 $(COBJ):$(CSRC)
 	cc $(FLAGS) -c $^
-
