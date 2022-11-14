@@ -19,7 +19,7 @@ SOBJ=server.o\
 all:$(NAME) $(NAME2)
 
 $(NAME):$(SOBJ) $(HOBJ)
-	cc $(FLAGS) -o server $^
+	cc $(FLAGS) -o $@ $^
 
 $(SOBJ):$(SSRC)
 	cc $(FLAGS) -c $^
@@ -32,3 +32,11 @@ $(NAME2):$(COBJ) $(HOBJ)
 
 $(COBJ):$(CSRC)
 	cc $(FLAGS) -c $^
+
+clean:
+	rm -rf $(HOBJ) $(COBJ) $(SOBJ)
+
+fclean:clean
+	rm -rf $(NAME) $(NAME2)
+
+re:fclean all
